@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nina The Monkey | $NINA</title>
+  <meta name="description" content="Nina The Monkey — baby monkey born with T-rex arms, no hands, giga heart. Play with the troop. Buy $NINA on Robinhood ETH." />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Titan+One&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bark: "#2A1810",
+            fur: "#7A4E2D",
+            "fur-deep": "#4A2C18",
+            peach: "#F0C4B0",
+            skin: "#E8A890",
+            sunset: "#FF8A4C",
+            gold: "#F4C56A",
+            canopy: "#14261B",
+            leaf: "#3D7A4A",
+            cream: "#FFF6EB",
+            moss: "#1B3A28",
+          },
+          fontFamily: {
+            display: ['"Titan One"', "system-ui", "sans-serif"],
+            fun: ['"Fredoka"', "system-ui", "sans-serif"],
+            sans: ['"Outfit"', "system-ui", "sans-serif"],
+          },
+          boxShadow: {
+            jungle: "0 20px 50px rgba(20, 12, 6, 0.45)",
+            glow: "0 0 40px rgba(255, 138, 76, 0.35)",
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --fur: #7a4e2d;
+      --peach: #f0c4b0;
+      --sunset: #ff8a4c;
+      --gold: #f4c56a;
+      --cream: #fff6eb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #0c1810;
+      color: var(--cream);
+    }
+
+    .forest-bg {
+      background-image:
+        linear-gradient(180deg, rgba(10, 22, 14, 0.72) 0%, rgba(20, 16, 10, 0.55) 35%, rgba(12, 24, 16, 0.78) 100%),
+        url("forest.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .grain::before {
+      content: "";
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      opacity: 0.07;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .vine-card {
+      background: linear-gradient(160deg, rgba(42, 24, 16, 0.82), rgba(26, 38, 24, 0.78));
+      border: 1px solid rgba(244, 197, 106, 0.28);
+      backdrop-filter: blur(16px);
+    }
+
+    .peach-card {
+      background: linear-gradient(165deg, rgba(240, 196, 176, 0.16), rgba(42, 24, 16, 0.8));
+      border: 1px solid rgba(240, 196, 176, 0.28);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-banner {
+      background-image:
+        linear-gradient(180deg, rgba(12, 24, 16, 0.15) 0%, rgba(12, 24, 16, 0.25) 55%, rgba(12, 24, 16, 0.92) 100%),
+        url("banner.png");
+      background-size: cover;
+      background-position: center 40%;
+    }
+
+    .logo-ring {
+      box-shadow:
+        0 0 0 6px rgba(244, 197, 106, 0.35),
+        0 0 0 12px rgba(255, 138, 76, 0.18),
+        0 25px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .marquee {
+      animation: marquee 28s linear infinite;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .float-slow {
+      animation: floaty 6s ease-in-out infinite;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .sway {
+      animation: sway 5s ease-in-out infinite;
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(-4deg); }
+      50% { transform: rotate(5deg); }
+    }
+
+    .step-num {
+      background: radial-gradient(circle at 30% 20%, #f4c56a, #ff8a4c 55%, #7a4e2d);
+    }
+
+    .copy-toast {
+      transform: translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+    }
+
+    .copy-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .leaf-corner {
+      position: absolute;
+      width: 88px;
+      height: 88px;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    iframe.dex-frame {
+      width: 100%;
+      height: 680px;
+      border: 0;
+      border-radius: 1.25rem;
+    }
+
+    @media (max-width: 768px) {
+      .forest-bg { background-attachment: scroll; }
+      iframe.dex-frame { height: 520px; }
+    }
+  </style>
+</head>
+<body class="forest-bg grain font-sans antialiased">
+  <svg class="hidden" aria-hidden="true">
+    <symbol id="leaf" viewBox="0 0 80 80">
+      <path fill="#3D7A4A" d="M10 70 C18 20 52 8 72 8 C68 38 42 66 10 70Z"/>
+      <path fill="#2A5533" d="M16 66 C26 30 54 16 68 14 C62 38 40 60 16 66Z"/>
+      <path stroke="#F4C56A" stroke-width="2" fill="none" d="M18 64 C36 40 52 22 68 14"/>
+    </symbol>
+  </svg>
+
+  <header class="fixed top-0 inset-x-0 z-50">
+    <div class="mx-auto max-w-6xl px-4 py-3">
+      <nav class="vine-card flex items-center justify-between rounded-2xl px-4 py-2.5 shadow-jungle">
+        <a href="#top" class="flex items-center gap-3">
+          <img src="logo.png" alt="Nina The Monkey logo" class="h-12 w-12 rounded-full object-cover ring-2 ring-gold/70" />
+          <div class="leading-tight">
+            <p class="font-display text-lg tracking-wide text-gold">NINA</p>
+            <p class="font-fun text-xs text-peach/80">The Monkey</p>
+          </div>
+        </a>
+        <div class="hidden items-center gap-6 md:flex">
+          <a href="#story" class="font-fun text-sm text-cream/80 hover:text-gold">Story</a>
+          <a href="#buy" class="font-fun text-sm text-cream/80 hover:text-gold">How to Buy</a>
+          <a href="#chart" class="font-fun text-sm text-cream/80 hover:text-gold">Chart</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="https://x.com/NinaTheMonkeyX" target="_blank" rel="noopener noreferrer" class="grid h-10 w-10 place-items-center rounded-full bg-black ring-1 ring-white/20 hover:ring-gold" aria-label="Nina on X">
+            <img src="x.png" alt="X" class="h-5 w-5" />
+          </a>
+          <a href="https://dexscreener.com/robinhood/TBA" target="_blank" rel="noopener noreferrer" class="hidden rounded-full border border-gold/40 px-4 py-2 font-fun text-sm text-gold hover:bg-gold/10 sm:inline-flex">Chart</a>
+          <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="rounded-full bg-gradient-to-r from-sunset to-gold px-4 py-2 font-fun text-sm font-semibold text-bark shadow-glow hover:brightness-110">Buy Now</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero-banner relative min-h-[100svh] overflow-hidden pt-28">
+      <svg class="leaf-corner sway left-2 top-24 md:left-8 md:top-32" viewBox="0 0 80 80"><use href="#leaf"/></svg>
+      <svg class="leaf-corner sway right-2 top-36 scale-x-[-1] md:right-10" style="animation-delay:-1.4s" viewBox="0 0 80 80"><use href="#leaf"/></svg>
+
+      <div class="relative mx-auto flex min-h-[calc(100svh-7rem)] max-w-6xl flex-col items-center justify-end px-4 pb-16 text-center">
+        <div class="float-slow mb-6">
+          <img src="logo.png" alt="Baby Nina" class="logo-ring mx-auto h-36 w-36 rounded-full object-cover md:h-44 md:w-44" />
+        </div>
+        <p class="mb-3 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-bark/50 px-4 py-1.5 font-fun text-xs uppercase tracking-[0.22em] text-gold md:text-sm">
+          T-rex arms · no hands · giga heart
+        </p>
+        <h1 class="font-display text-5xl leading-none text-cream drop-shadow-[0_6px_0_rgba(42,24,16,0.55)] sm:text-7xl md:text-8xl">
+          NINA THE<br /><span class="text-gold">MONKEY</span>
+        </h1>
+        <p class="mt-5 max-w-2xl font-fun text-lg text-peach md:text-2xl">
+          This baby monkey was born with a defect — T-rex arms, no hands — and still plays with the troop in hundreds of videos.
+          <span class="text-gold">This is a giga.</span>
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="rounded-full bg-gradient-to-r from-sunset to-gold px-8 py-3.5 font-fun text-lg font-semibold text-bark shadow-glow hover:brightness-110">Buy Now</a>
+          <a href="https://dexscreener.com/robinhood/TBA" target="_blank" rel="noopener noreferrer" class="rounded-full border border-peach/50 bg-bark/50 px-8 py-3.5 font-fun text-lg text-peach hover:bg-peach/10">Chart</a>
+          <a href="https://x.com/NinaTheMonkeyX" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/50 px-6 py-3.5 font-fun text-lg text-cream hover:border-gold/50">
+            <img src="x.png" alt="" class="h-4 w-4" /> Follow
+          </a>
+        </div>
+
+        <div class="mt-8 w-full max-w-xl">
+          <p class="mb-2 font-fun text-xs uppercase tracking-[0.2em] text-gold/80">Contract Address</p>
+          <button id="copy-ca" type="button" class="group flex w-full items-center justify-between gap-3 rounded-2xl border border-gold/30 bg-bark/70 px-4 py-3 text-left hover:border-gold">
+            <span class="truncate font-mono text-sm text-cream/90 sm:text-base" id="ca-text">TBA</span>
+            <span class="shrink-0 rounded-full bg-gold/15 px-3 py-1 font-fun text-xs text-gold group-hover:bg-gold group-hover:text-bark">Copy CA</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="overflow-hidden border-y border-gold/20 bg-bark/80">
+      <div class="flex w-max marquee py-3 font-fun text-sm uppercase tracking-[0.28em] text-gold">
+        <span class="px-8">$NINA · T-rex arms · no hands · plays with monkeys · hundreds of videos · this is a giga · Robinhood ETH · jungle troop · tiny arms giga bag ·</span>
+        <span class="px-8">$NINA · T-rex arms · no hands · plays with monkeys · hundreds of videos · this is a giga · Robinhood ETH · jungle troop · tiny arms giga bag ·</span>
+      </div>
+    </div>
+
+    <section id="story" class="relative py-24">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 md:grid-cols-2">
+        <div class="relative">
+          <div class="absolute -left-3 -top-3 h-16 w-16 rounded-full bg-sunset/40 blur-2xl"></div>
+          <img src="logo.png" alt="Nina sitting with T-rex arms" class="relative w-full rounded-[2rem] object-cover shadow-jungle ring-1 ring-gold/25" />
+          <div class="absolute -bottom-4 -right-2 rounded-2xl bg-gradient-to-r from-sunset to-gold px-4 py-2 font-fun text-sm font-semibold text-bark shadow-glow md:text-base">
+            Tiny arms. Giga presence.
+          </div>
+        </div>
+        <div class="peach-card rounded-[2rem] p-8 md:p-10">
+          <p class="font-fun text-sm uppercase tracking-[0.24em] text-gold">The troop lore</p>
+          <h2 class="mt-3 font-display text-4xl text-cream md:text-5xl">Born different.<br />Still the main character.</h2>
+          <div class="mt-6 space-y-4 text-lg leading-relaxed text-peach/90">
+            <p>
+              This baby monkey was born with a defect that gave her <strong class="text-gold">T-rex arms</strong> and
+              <strong class="text-gold">no hands</strong>. The jungle did not care. Nina still plays with the other monkeys
+              like she invented recess.
+            </p>
+            <p>
+              Hundreds of videos. Same energy every time. No hands, all heart, zero excuses.
+              She is not a mascot. She is a movement. She is a <span class="font-fun text-gold">giga</span>.
+            </p>
+            <p>
+              $NINA is that energy on Robinhood ETH — short arms, long memory, and a bag that slaps harder than a vine swing.
+            </p>
+          </div>
+          <div class="mt-8 grid grid-cols-3 gap-3">
+            <div class="rounded-2xl bg-bark/50 p-4 text-center">
+              <p class="font-display text-2xl text-gold">$NINA</p>
+              <p class="font-fun text-xs text-peach/70">Ticker</p>
+            </div>
+            <div class="rounded-2xl bg-bark/50 p-4 text-center">
+              <p class="font-display text-2xl text-gold">RH</p>
+              <p class="font-fun text-xs text-peach/70">Robinhood ETH</p>
+            </div>
+            <div class="rounded-2xl bg-bark/50 p-4 text-center">
+              <p class="font-display text-2xl text-gold">GIGA</p>
+              <p class="font-fun text-xs text-peach/70">Energy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="buy" class="relative py-10 pb-24">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="mb-12 text-center">
+          <p class="font-fun text-sm uppercase tracking-[0.24em] text-gold">Join the troop</p>
+          <h2 class="mt-3 font-display text-4xl text-cream md:text-6xl">How to Buy $NINA</h2>
+          <p class="mx-auto mt-4 max-w-2xl font-fun text-lg text-peach/85">
+            Four swings through the canopy. Grab Robinhood ETH, swap on Uniswap, come home with a giga bag.
+          </p>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-2">
+          <article class="vine-card relative overflow-hidden rounded-[1.75rem] p-6 md:p-8">
+            <div class="step-num mb-5 grid h-14 w-14 place-items-center rounded-2xl font-display text-2xl text-bark">1</div>
+            <h3 class="font-fun text-2xl text-gold">Get Robinhood ETH</h3>
+            <p class="mt-3 leading-relaxed text-peach/90">
+              Open Robinhood and buy ETH. Keep it on Robinhood Chain so your bananas stay in the same jungle as $NINA.
+            </p>
+          </article>
+          <article class="vine-card relative overflow-hidden rounded-[1.75rem] p-6 md:p-8">
+            <div class="step-num mb-5 grid h-14 w-14 place-items-center rounded-2xl font-display text-2xl text-bark">2</div>
+            <h3 class="font-fun text-2xl text-gold">Unlock the wallet</h3>
+            <p class="mt-3 leading-relaxed text-peach/90">
+              Use Robinhood Wallet or any wallet that supports Robinhood Chain. Make sure you have enough ETH for the swap and a little gas.
+            </p>
+          </article>
+          <article class="vine-card relative overflow-hidden rounded-[1.75rem] p-6 md:p-8">
+            <div class="step-num mb-5 grid h-14 w-14 place-items-center rounded-2xl font-display text-2xl text-bark">3</div>
+            <h3 class="font-fun text-2xl text-gold">Swing to Uniswap</h3>
+            <p class="mt-3 leading-relaxed text-peach/90">
+              Hit <span class="text-gold">Buy Now</span>. Uniswap opens on Robinhood Chain with $NINA already queued. Paste the CA if you want to double-check the troop.
+            </p>
+          </article>
+          <article class="vine-card relative overflow-hidden rounded-[1.75rem] p-6 md:p-8">
+            <div class="step-num mb-5 grid h-14 w-14 place-items-center rounded-2xl font-display text-2xl text-bark">4</div>
+            <h3 class="font-fun text-2xl text-gold">Swap ETH for $NINA</h3>
+            <p class="mt-3 leading-relaxed text-peach/90">
+              Confirm the swap. Tiny arms, giga bag. You are now in the troop that plays with everybody and still wins the timeline.
+            </p>
+          </article>
+        </div>
+
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="rounded-full bg-gradient-to-r from-sunset to-gold px-8 py-3.5 font-fun text-lg font-semibold text-bark shadow-glow hover:brightness-110">Buy Now</a>
+          <a href="https://dexscreener.com/robinhood/TBA" target="_blank" rel="noopener noreferrer" class="rounded-full border border-gold/40 px-8 py-3.5 font-fun text-lg text-gold hover:bg-gold/10">Open Chart</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="chart" class="pb-24">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+          <div>
+            <p class="font-fun text-sm uppercase tracking-[0.24em] text-gold">Live canopy</p>
+            <h2 class="mt-2 font-display text-4xl text-cream md:text-5xl">$NINA Chart</h2>
+          </div>
+          <a href="https://dexscreener.com/robinhood/TBA" target="_blank" rel="noopener noreferrer" class="rounded-full border border-peach/40 px-5 py-2 font-fun text-sm text-peach hover:bg-peach/10">View on Dexscreener</a>
+        </div>
+        <div class="vine-card rounded-[2rem] p-3 md:p-4">
+          <iframe
+            class="dex-frame"
+            title="Dexscreener $NINA chart"
+            src="https://dexscreener.com/robinhood/TBA?embed=1&loadChartSettings=1&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-gold/20 bg-bark/80 py-10">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 md:flex-row">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="" class="h-12 w-12 rounded-full object-cover ring-2 ring-gold/50" />
+        <div>
+          <p class="font-display text-xl text-gold">NINA THE MONKEY</p>
+          <p class="font-fun text-sm text-peach/70">T-rex arms. Giga heart. $NINA.</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="https://x.com/NinaTheMonkeyX" target="_blank" rel="noopener noreferrer" class="grid h-11 w-11 place-items-center rounded-full bg-black ring-1 ring-white/20" aria-label="X">
+          <img src="x.png" alt="X" class="h-5 w-5" />
+        </a>
+        <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="rounded-full bg-gradient-to-r from-sunset to-gold px-5 py-2 font-fun text-sm font-semibold text-bark">Buy Now</a>
+      </div>
+    </div>
+    <p class="mt-8 text-center font-fun text-xs text-peach/50">$NINA is a meme. Not financial advice. Play with the monkeys. Don’t ape with rent money.</p>
+  </footer>
+
+  <div id="toast" class="copy-toast fixed bottom-6 left-1/2 z-[90] -translate-x-1/2 rounded-full bg-gold px-5 py-2 font-fun text-sm font-semibold text-bark shadow-glow">
+    CA copied
+  </div>
+
+  <script>
+    const ca = "TBA";
+    const btn = document.getElementById("copy-ca");
+    const toast = document.getElementById("toast");
+
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(ca);
+      } catch {
+        const area = document.createElement("textarea");
+        area.value = ca;
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+      }
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1600);
+    });
+  </script>
+</body>
+</html>
